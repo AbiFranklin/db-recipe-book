@@ -26,8 +26,8 @@ module.exports = {
     },
 
     getDirections: (id) => {
-        return db.select('recipe_name', 'step_number', 'directions').where('recipe.id', id)
-        .from('recipe').innerJoin('steps', 'recipe.id', 'steps.recipe_id');
+        return db.select('recipe_name', 'step_number', 'directions').from('recipe').where('recipe.id', id)
+        .leftJoin('steps', 'recipe.id', 'steps.recipe_id')
     }
 }
 
